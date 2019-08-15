@@ -210,8 +210,6 @@ def main():
         #                               longitude_address, latitude_name, longitude_name, matched_address_2]
         #print("Completed with " + institution_name)
 
-   # output_DF.to_excel(test_output_path, engine='xlsxwriter')
-
 
 if __name__ == '__main__':
     main()
