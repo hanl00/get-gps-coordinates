@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb8f4218-ea25-4e89-87bd-58417696e5ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get-gps-coordinates-cities.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get-gps-coordinates.py" beforeDir="false" afterPath="$PROJECT_DIR$/get-gps-coordinates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test-output.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get-gps-coordinates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output.xlsx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
