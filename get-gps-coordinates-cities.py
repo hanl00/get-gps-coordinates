@@ -113,12 +113,12 @@ def main():
 
     # move open files into main as well, then add multiple processes, then add the search by name feature
     # dynamic pathname based on different device, instead of hard coding the pathname
-    cities_list_path = os.path.join(os.getcwd(), 'Cities and Countries.xlsx')
+    cities_list_path = os.path.join(os.getcwd(), 'Current_city_input.xlsx')
     # test_output_path = os.path.join(os.getcwd(), 'test-output.xlsx')
 
     rawdata = pd.read_excel(cities_list_path)
     cities_list_data = rawdata.values.tolist()
-    #print(cities_list_data)
+    #print(rawdata)
 
     # Multiprocessing Collect_Data()
 
