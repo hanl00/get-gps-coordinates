@@ -33,10 +33,9 @@ options.add_argument('--disable-gpu')
 
 
 # create new function () input : address and institution name; output : latitude and longitude values
-
-def search_by_name_and_address(institution_list_data):  # compare country with id window box
-    input_string_name = institution_list_data[0]
-    input_string_address = institution_list_data[9]
+def search_by_city_name(cities_list_data):  # compare country with id window box
+    input_city_name = cities_list_data[0].lstrip().rstrip() + ', ' + cities_list_data[1].lstrip().rstrip()
+    print(input_city_name)
     driver = webdriver.Chrome(options=options,
                               executable_path=r'C:\Users\Nicholas\Documents\Summer intern @ Seeka\chromedriver.exe')
     driver.get(Homepage)
@@ -48,23 +47,29 @@ def search_by_name_and_address(institution_list_data):  # compare country with i
     time.sleep(0.5)
     element.send_keys(Keys.DELETE)
     time.sleep(0.5)
-    element.send_keys(input_string_name)
-    time.sleep(3)
-
-    # add action to handle drop down menu
-    driver.find_element_by_xpath("/html/body/div[1]/div/a[1]").click()
-    driver.find_element_by_class_name("btn").click()
+    element.send_keys(input_city_name)
     time.sleep(1)
 
+    # add action to handle drop down menu
+    try:
+        time.sleep(1)
+        driver.find_element_by_xpath("/html/body/div[1]/div/a[1]").click()
+        driver.find_element_by_class_name("btn").click()
+    except:
+        pass
+
+    time.sleep(1)
     # error handling try catch
     # Details = ['Institution Name', 'Provided Address', 'Matched Address using address search',
     # 'Latitude_address', 'Longitude_address', 'Matched Address using name search', 'Latitude_name', 'Longitude_name']
-    details = ['', '', '', '', '', '', '', '']
-    details[0] = input_string_name
+    details = ['', '', '', '', '']
+    details[0] = cities_list_data[0].lstrip().rstrip()
+    details[1] = cities_list_data[1].lstrip().rstrip()
 
     try:
+        # unlikely event
         # EC.alert_is_present: # popup exist, code returns N/A for lat and long
-        time.sleep(2)
+        time.sleep(1)
         alert = driver.switch_to.alert
         alert.accept()
         driver.quit()
@@ -72,8 +77,8 @@ def search_by_name_and_address(institution_list_data):  # compare country with i
 
     except:
         try:
-            delay = 10
-            myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'info_window')))
+            delay = 30
+            WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'info_window')))
             soup = BeautifulSoup(driver.page_source, "lxml")
             x = soup.find(id='info_window').get_text()
             y = x.split("Latitude: ")
@@ -108,26 +113,27 @@ def main():
 
     # move open files into main as well, then add multiple processes, then add the search by name feature
     # dynamic pathname based on different device, instead of hard coding the pathname
-    institution_list_path = os.path.join(os.getcwd(), 'institution-details.xlsx')
-    test_output_path = os.path.join(os.getcwd(), 'test-output.xlsx')
+    cities_list_path = os.path.join(os.getcwd(), 'Cities and Countries.xlsx')
+    # test_output_path = os.path.join(os.getcwd(), 'test-output.xlsx')
 
-    # open the final_file.xlsx,  drop rows which university name values are null
-    rawdata = pd.read_excel(institution_list_path)
-    rawdata = rawdata.dropna(axis=0, subset=('Univeristy_Name',))
-    institution_list_data = rawdata.values.tolist()
-    #print(institution_list_data)
+    rawdata = pd.read_excel(cities_list_path)
+    cities_list_data = rawdata.values.tolist()
+    #print(cities_list_data)
 
     # Multiprocessing Collect_Data()
-    all_data = multi_pool(search_by_name_and_address, institution_list_data, 10)
+
+    all_data = multi_pool(search_by_city_name, cities_list_data, 5)
 
 
     #writing into an output file
-    with open('C:/Users/Nicholas/Documents/Summer intern @ Seeka/get-gps-coordinates/output-institutions.csv', 'wt', encoding="utf-8", newline='') as website:
-        writer = csv.writer(website)
-        print("Writing details to CSV File now....")
-        for a in all_data:
-            writer.writerow(a)
-    print("Total number of rows written to test-output-1 file: " + str(len(all_data)))
+    with open('C:/Users/Nicholas/Documents/Summer intern @ Seeka/get-gps-coordinates/output-cities.csv', 'wt', encoding="utf-8", newline='') as website:
+            writer = csv.writer(website)
+            print("Writing details to CSV File now....")
+            columnheader = ['City', 'Country', 'Matched address', 'Latitude', 'Longitude']
+            writer.writerow(columnheader)
+            for a in all_data:
+                writer.writerow(a)
+    #print("Total number of rows written to test-output-1 file: " + str(len(all_data)))
 
     stop = timeit.default_timer()
     time_sec = stop - start
