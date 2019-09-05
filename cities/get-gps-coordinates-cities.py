@@ -122,11 +122,11 @@ def main():
 
     # Multiprocessing Collect_Data()
 
-    all_data = multi_pool(search_by_city_name, cities_list_data, 5)
+    all_data = multi_pool(search_by_city_name, cities_list_data, 1)
 
 
     #writing into an output file
-    with open('C:/Users/Nicholas/Documents/Summer intern @ Seeka/get-gps-coordinates/output-cities.csv', 'wt', encoding="utf-8", newline='') as website:
+    with open('C:/Users/Nicholas/Documents/Summer intern @ Seeka/get-gps-coordinates/cities/output-cities.csv', 'wt', encoding="utf-8", newline='') as website:
             writer = csv.writer(website)
             print("Writing details to CSV File now....")
             columnheader = ['City', 'Country', 'Matched address', 'Latitude', 'Longitude']

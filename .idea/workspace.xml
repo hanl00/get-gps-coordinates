@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8f4218-ea25-4e89-87bd-58417696e5ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cities and Countries - Full list.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Current_city_input.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/get-gps-coordinates-cities.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/get-gps-coordinates-institutions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/institution-details.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output-cities - Copy.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output-cities.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output-1.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cities/Current_city_input.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/cities/Current_city_input.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cities/get-gps-coordinates-cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/cities/get-gps-coordinates-cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cities/output-cities - Copy.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cities/output-cities.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cities/output-cities.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tripadvisorscrape-run" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunDashboard">
